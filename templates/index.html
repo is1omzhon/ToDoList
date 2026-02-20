@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}Главная - TODO-лист{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Добро пожаловать в TODO-лист! 📝</h1>
+        <p class="lead">Простое и удобное приложение для управления задачами.</p>
+        <hr class="my-4">
+        <p>Чтобы начать работу, войдите или зарегистрируйтесь.</p>
+        <div class="mt-4">
+            <a href="{% url 'login' %} " class="btn btn-primary btn-lg me-2">Вход</a>
+            <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Регистрация</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

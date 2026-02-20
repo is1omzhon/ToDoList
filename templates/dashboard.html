@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}Мои задачи{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="mb-4">Мои задачи</h1>
+        
+        <a href="{% url 'task_create' %}" class="btn btn-success mb-3">➕ Добавить новую задачу</a>
+        
+        {% if tasks %}
+            <div class="list-group">
+                {% for task in tasks %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ task.title }}</h5>
+                            <p class="mb-1 text-muted">{{ task.description|truncatechars:100 }}</p>
+                            <small>Создано: {{ task.created_at|date:"d.m.Y H:i" }}</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2" >
+                            
+                            <a href="{% url 'task_toggle' task.id %}" class="btn btn-sm {% if task.completed %}btn-success{% else %}btn-warning{% endif %}">
+                                {% if task.completed %}✅{% else %}⏳{% endif %}
+                            </a>
+                            <a href="{% url 'task_edit' task.id %}" class="btn btn-sm btn-outline-primary">✏️ Редактировать</a>
+                            <a href="{% url 'task_delete' task.id %}" class="btn btn-sm btn-outline-danger">🗑️</a>
+
+                            {% if task.completed %}
+                                <span class="badge bg-success">✅ Выполнено</span>
+                            {% else %}
+                                <span class="badge bg-warning">⏳ В процессе</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                У вас пока нет задач. 
+                <a href="#" class="alert-link">Создайте первую задачу!</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

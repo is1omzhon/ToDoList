@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}Регистрация - TODO-лист{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Регистрация</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password1" name="password1" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Подтверждение пароля</label>
+                        <input type="password" class="form-control" id="password2" name="password2" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-0">Уже есть аккаунт? <a href="#">Войти</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

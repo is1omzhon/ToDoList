@@ -1,0 +1,33 @@
+# Виртуальное окружение
+venv/
+env/
+ENV/
+
+# База данных
+*.sqlite3
+*.db
+
+# Файлы Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Настройки с секретами
+.env
+*.env
+
+# Медиа файлы
+/media/
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Дистрибутивы
+dist/
+build/
+*.egg-info/
